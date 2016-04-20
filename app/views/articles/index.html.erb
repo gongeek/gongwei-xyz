@@ -1,0 +1,49 @@
+<%= render 'share/banner' %>
+<div class="main">
+  <div class="left">
+    <div class="tag-tips">
+      <i class="icon">&#xe604</i>
+      当前标签:
+      <a href="#">#电影</a>
+    </div>
+    <% @articles.each do |article| %>
+        <div class="post">
+          <h2 class="title">
+            <a href="/post.html">
+              <%= article.title %>
+            </a>
+          </h2>
+          <div class="info">
+            <div class="date">
+              <i class="icon">&#xe602;</i>2016-01-22
+            </div>
+            <div class="tag">
+              <i class="icon">&#xe600;</i>
+              <span><a href="#">#读书</a></span>
+              <span><a href="#">#电影</a></span>
+            </div>
+          </div>
+          <p class="short">
+            <a href="/post.html">
+              这本书讲述一个平凡的故事或者称不上是故事，但是看完后总觉的十分舒服。是啊，每个人都无不走在原本不属于自己的近道上。
+
+              也许这才是最高境界吧。小说不一定要有波澜起伏的情节故事，真正的高手只需在平凡的生活中道出一些能够引起你共鸣的心境吧!
+
+              走在近道的感觉永远是那么美好！
+            </a>
+
+          </p>
+          <div class="btn-group">
+            <a href="#" class="link-btn">阅读全文</a>
+            <a href="#" class="link-btn">评论 (5)</a>
+          </div>
+        </div>
+    <% end %>
+    <div class="page-group">
+      <a href="#" class="link-btn">上一页</a>
+      <a href="#" class="link-btn">下一页</a>
+    </div>
+  </div>
+  <%= render 'share/side' %>
+</div>
+<%= render 'share/ad' %>
