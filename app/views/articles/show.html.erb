@@ -1,0 +1,48 @@
+<div class="main">
+  <div class="left">
+    <div class="post">
+      <h2 class="title">
+        <a href="<%= url_for @article %>">
+          <%= @article.title %>
+        </a>
+      </h2>
+      <div class="info">
+        <div class="date">
+          <i class="icon">&#xe602;</i><%= simple_date(@article.created_at) %>
+        </div>
+        <div class="tag">
+          <i class="icon">&#xe600;</i>
+
+          <% @article.tags.split(',').each do |tag| %>
+              <span><a href="#">#<%= tag %></a></span>
+          <% end %>
+
+        </div>
+      </div>
+      <div class="post-content">
+        <%= @article.content %>
+      </div>
+    </div>
+    <div class="comment">
+
+      <!-- 多说评论框 start -->
+      <div class="ds-thread" data-thread-key="<%= @article.id %>" data-title="<%= @article.title %>" data-url="<%= url_for @article %>"></div>
+      <!-- 多说评论框 end -->
+      <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+      <script type="text/javascript">
+        var duoshuoQuery = {short_name: "gongweixyz"};
+        (function () {
+          var ds = document.createElement('script');
+          ds.type = 'text/javascript';
+          ds.async = true;
+          ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+          ds.charset = 'UTF-8';
+          (document.getElementsByTagName('head')[0]
+          || document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+      </script>
+      <!-- 多说公共JS代码 end -->
+    </div>
+  </div>
+  <%= render 'share/side' %>
+</div>
