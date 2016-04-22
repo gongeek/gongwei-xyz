@@ -33,6 +33,10 @@
           <div class="btn-group">
             <a href="<%= url_for article %>" class="link-btn">阅读全文</a>
             <a href="<%= url_for article %>" class="link-btn">评论 (5)</a>
+            <% if admin? %>
+                <%= link_to '编辑', edit_article_path(article), class: 'link-btn' %>
+                <%= link_to '删除', article_path(article), class: 'link-btn', method: :delete, data: {confirm: '确认删除?'} %>
+            <% end %>
           </div>
         </div>
     <% end %>

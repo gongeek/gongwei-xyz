@@ -12,5 +12,11 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+//= require modal
+//= require_self
 //= require_tree .
+$(document).ready(function () {
+    $('#login-btn').leanModal({
+        modalId: '#login-modal'
+    })
+});

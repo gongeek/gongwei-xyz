@@ -11,5 +11,9 @@
  * file per style scope.
  *
  *= require_tree .
+ *= require pure-button
+ *= require pure-form
+ *= require modal
  *= require_self
+
  */

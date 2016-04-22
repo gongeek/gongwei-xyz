@@ -1,13 +1,13 @@
-<%= form_for @article, :html => {:class => 'pure-form pure-form-stacked'} do |f| %>
+<%= form_for @article, html: {class: 'pure-form pure-form-stacked'} do |f| %>
     <fieldset>
       <%= f.label :title %>
-      <%= f.text_field :title, :class => 'pure-input-1-3' %>
+      <%= f.text_field :title, class: 'pure-input-1-3' %>
       <%= f.label :tags %>
-      <%= f.text_field :tags, :class => 'pure-input-1-3' %>
+      <%= f.text_field :tags, class: 'pure-input-1-3' %>
       <%= f.label :content %>
-      <%= f.text_area :content, :class => 'pure-input-2-3', :rows => '24' %>
+      <%= f.text_area :content, class: 'pure-input-2-3', rows: '24' %>
       <div style="margin-top: 20px">
-        <%= f.submit '提交', :class => 'pure-button pure-button-primary' %>
+        <%= f.submit '提交', class: 'pure-button pure-button-primary' %>
       </div>
     </fieldset>
 <% end %>
