@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
 
   def authorize
     unless admin?
-      redirect_to articles_path
+      redirect_to articles_path, :notice => '请登入!'
     end
   end
 end

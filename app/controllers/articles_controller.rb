@@ -3,7 +3,15 @@ class ArticlesController < ApplicationController
   before_action :authorize, :except => [:index, :show]
 
   def index
-    @articles = Article.all
+    page=params[:page]||1
+    page=page.to_i
+    if params[:search]
+      @articles = Article.search(params[:search], page)
+    elsif params[:tag]
+      @articles=Article.filter_tag(params[:tag], page)
+    else
+      @articles =Article.get_at_page(page)
+    end
   end
 
   def new
@@ -15,12 +23,10 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(articles_params)
-    respond_to do |format|
-      if @article.save
-        redirect_to @article, notice: '文章创建成功!'
-      else
-        render 'new'
-      end
+    if @article.save
+      redirect_to @article, notice: '文章创建成功!'
+    else
+      render 'new'
     end
   end
 

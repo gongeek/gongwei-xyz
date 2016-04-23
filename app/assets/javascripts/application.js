@@ -13,10 +13,34 @@
 //= require jquery
 //= require jquery_ujs
 //= require modal
-//= require_self
+//= require turbolinks
 //= require_tree .
+//= require_self
+//= require nprogress
+//= require scrollTo
 $(document).ready(function () {
     $('#login-btn').leanModal({
         modalId: '#login-modal'
-    })
+    });
+    $('.search-input').on('keyup', function (e) {
+        var code = e.which;
+        if (code == 13 && $(this).val().length > 0) {
+            document.location = document.location + '?search=' + $(this).val();
+        }
+    });
+
+    $(document).on('scroll', function (e) {
+        
+    });
+
+});
+
+$(document).on('page:fetch', function () {
+    NProgress.start();
+});
+$(document).on('page:change', function () {
+    NProgress.done();
+});
+$(document).on('page:restore', function () {
+    NProgress.remove();
 });

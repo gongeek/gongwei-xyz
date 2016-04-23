@@ -15,5 +15,5 @@
  *= require pure-form
  *= require modal
  *= require_self
-
+ *= require nprogress
  */

@@ -8,10 +8,10 @@
       </h2>
       <div class="info">
         <div class="date">
-          <i class="icon">&#xe602;</i><%= simple_date(@article.created_at) %>
+          <i class="icon">&#xe600;</i><%= simple_date(@article.created_at) %>
         </div>
         <div class="tag">
-          <i class="icon">&#xe600;</i>
+          <i class="icon">&#xe602;</i>
 
           <% @article.tags.split(',').each do |tag| %>
               <span><a href="#">#<%= tag %></a></span>

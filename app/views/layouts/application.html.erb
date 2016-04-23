@@ -3,12 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <title>gongwei.xyz</title>
-  <%= stylesheet_link_tag 'application', media: 'all'%>
-  <%= javascript_include_tag 'application'%>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+
+<% if flash[:notice] || flash[:error] %>
+    <div class="flash">
+      <div class="notice"><%= flash[:notice] %></div>
+      <div class="error"><%= flash[:error] %></div>
+    </div>
+<% end %>
 <%= render 'share/menu' %>
 <%= yield %>
+<div class="to-top-btn">
+  <i class="icon">&#xe603;</i>
+</div>
 </body>
 </html>

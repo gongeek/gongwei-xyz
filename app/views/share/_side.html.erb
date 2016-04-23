@@ -1,6 +1,10 @@
 <div class="right">
   <div class="search">
-    <input type="text" class=" search-input" placeholder="搜索文章" name="search"/>
+    <input type="text" class="search-input"
+           <% if search_params %>
+           value="<%= search_params %>"
+           <% end %>
+           placeholder="搜索文章" name="search"/>
     <i class="icon">
       &#xe601;
     </i>
@@ -9,18 +13,13 @@
     <h3>All标签</h3>
     <div class="content">
       <ul>
-        <li>
-          <a href="#">#读书(10)</a>
-          <a href="#">#读书(10)</a>
-          <a href="#">#读书(10)</a>
-        </li>
-        <li><a href="#">#读书(10)</a>
-          <a href="#">#读书(10)</a>
-          <a href="#">#读书(10)</a></li>
-        <li><a href="#">#读书(10)</a>
-          <a href="#">#读书(10)</a>
-          <a href="#">#读书(10)</a>
-        </li>
+        <%= all_tags.each_slice(4) do |v| %>
+            <li>
+              <% v.each do |tag| %>
+                  <a href="?tag=<%= tag[0] %>">#<%= tag[0] %>(<%= tag[1] %>)</a>
+              <% end %>
+            </li>
+        <% end %>
       </ul>
     </div>
   </div>

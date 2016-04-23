@@ -1,0 +1,20 @@
+<% page_size=paging[:page_size]
+   total_size=paging[:total_size]
+   curr_page=paging[:curr_page]
+%>
+
+<% if page_size<total_size %>
+    <div class="page-group">
+      <% total_num= (total_size/page_size.to_f).ceil %>
+
+      <% if curr_page-1 > 0 %>
+          <a href="<%= url_for(params.merge(page: curr_page-1)) %>" class="link-btn">上一页</a>
+      <% end %>
+      <% (1..total_num).to_a.each do |num| %>
+          <a href="<%= url_for(params.merge(page: num)) %>" class="link-btn <%= (num==curr_page) ? 'active-link-btn' : '' %>"><%= num %></a>
+      <% end %>
+      <% if curr_page+1<=total_num %>
+          <a href="<%= url_for(params.merge(page: curr_page+1)) %>" class="link-btn">下一页</a>
+      <% end %>
+    </div>
+<% end %>

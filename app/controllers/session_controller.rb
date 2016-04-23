@@ -3,7 +3,11 @@ class SessionController < ApplicationController
   def create
     session[:username]= Digest::SHA1.hexdigest(params[:username])
     session[:password]= Digest::SHA1.hexdigest(params[:password])
-    redirect_to :back
+    if admin?
+      redirect_to :back, :notice => '登入成功!'
+    else
+      redirect_to :back, :notice => '登入失败!'
+    end
   end
 
   def destroy
