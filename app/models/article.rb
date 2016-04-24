@@ -2,6 +2,10 @@ class Article < ActiveRecord::Base
   @@temp_article
   attr_accessor :temp_article
 
+  class << self
+    attr_accessor :temp_article
+  end
+
   def self.search(search, page)
     where('title LIKE ? OR content LIKE ?', "%#{search}%", "%#{search}%").order("created_at DESC").limit(page_size).offset((page-1)*page_size)
   end

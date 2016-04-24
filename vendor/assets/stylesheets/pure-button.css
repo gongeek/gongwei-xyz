@@ -69,6 +69,15 @@ a.pure-button-selected {
     cursor: pointer;
 }
 
+.pure-button-second {
+    background-color: #85858E;
+    color: #FFFFFF;
+}
+
+.pure-button-second:hover {
+    color: #FFFFFF;
+}
+
 /*//多说按钮*/
 .ds-post-button {
     background-color: #1F1F1A !important;

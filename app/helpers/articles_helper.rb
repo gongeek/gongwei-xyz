@@ -48,4 +48,8 @@ module ArticlesHelper
     end
     page_info={page_size: Article.page_size, curr_page: page, total_size: total_size}
   end
+
+  def preview?
+    request.fullpath.include?('preview')
+  end
 end

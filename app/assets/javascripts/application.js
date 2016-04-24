@@ -63,10 +63,8 @@ function ready() {
         $('.flash-notice').fadeOut(1000)
     }, 500);
 
-    $('#preview-btn').on('click', function () {
 
-    });
-    //set 配置
+    //配置marked
     if (typeof marked === 'function' && typeof hljs === 'object') {
         marked.setOptions({
             highlight: function (code) {
@@ -76,11 +74,28 @@ function ready() {
         });
     }
 
+    $('#preview-btn').on('click', function (e) {
+        var $form = $(this).parents('form').clone(),
+            contentMd = $form.find('[name="article[content_md]"]').val();
+        $form.append('<textarea style="display: none" name="article[content]">' + marked(contentMd) + '</textarea>');
+        $form.find('[name="_method"]').remove();
+
+        $.post('/articles/preview_post', $form.serialize(), function (data) {
+            if (data.ok) {
+                $('#preview-click-btn').click();//防止被浏览器屏蔽
+            }
+        })
+
+    });
+
+    $('#preview-click-btn').on('click', function (e) {
+        window.open('/articles/preview', '预览');
+    });
+
     $('#submit-btn').on('click', function (e) {
         var $form = $(this).parents('form'),
             contentMd = $form.find('[name="article[content_md]"]').val();
         $form.append('<textarea style="display: none" name="article[content]">' + marked(contentMd) + '</textarea>');
-        debugger;
         $form.submit();
     });
 }

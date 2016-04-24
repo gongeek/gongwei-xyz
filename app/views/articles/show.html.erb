@@ -22,12 +22,15 @@
       <div class="post-content markdown-body">
         <%= @article.content.html_safe %>
       </div>
-      <div class="btn-group">
-        <% if admin? %>
-            <%= link_to '编辑', edit_article_path(@article), class: 'link-btn' %>
-            <%= link_to '删除', article_path(@article), class: 'link-btn', method: :delete, data: {confirm: '确认删除?'} %>
-        <% end %>
-      </div>
+      <% if !preview? %>
+          <div class="btn-group">
+            <% if admin? %>
+                <%= link_to '编辑', edit_article_path(@article), class: 'link-btn' %>
+                <%= link_to '删除', article_path(@article), class: 'link-btn', method: :delete, data: {confirm: '确认删除?'} %>
+            <% end %>
+          </div>
+      <% end %>
+
     </div>
     <div class="comment">
 

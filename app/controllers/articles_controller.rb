@@ -51,24 +51,25 @@ class ArticlesController < ApplicationController
   end
 
   def preview
-
+    @article=Article.temp_article
+    render template: "articles/show"
   end
 
   def preview_post
-    begin
-      Article.temp_article=Article.new(articles_params)
-      respond_to do |format|
-        format.json do
-          render json: {ok: true}
-        end
-      end
-    rescue
-      respond_to do |format|
-        format.json do
-          render json: {ok: false}
-        end
+    # begin
+    Article.temp_article=Article.new(articles_params)
+    respond_to do |format|
+      format.json do
+        render json: {ok: true}
       end
     end
+    # rescue
+    # respond_to do |format|
+    #   format.json do
+    #     render json: {ok: false}
+    #   end
+    # end
+    # end
   end
 
   private
