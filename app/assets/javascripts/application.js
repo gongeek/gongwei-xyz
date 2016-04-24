@@ -98,6 +98,23 @@ function ready() {
         $form.append('<textarea style="display: none" name="article[content]">' + marked(contentMd) + '</textarea>');
         $form.submit();
     });
+
+    $('#file-up-btn').AjaxFileUpload({
+        action: '/file_up.json',
+        onSubmit: function () {
+            return {authenticity_token: AUTH_TOKEN}
+        },
+        onComplete: function (filename, response) {
+            if (response.ok) {
+                $('.upload-result').append('<li><i class="icon" data-clipboard-text="http://' + location.host + '/file/' + response.data.filename + '">&#xe605;</i><a href="/file/' + response.data.filename + '" target="_blank">' + response.data.filename + '</a></li>')
+            } else {
+                $('.upload-result').append('<li>error!</li>>')
+            }
+        }
+    });
+
+    new Clipboard('.upload-result i');
+
 }
 
 function init() {
@@ -118,7 +135,6 @@ function init() {
     //     settings.data = settings.data || "";
     //     settings.data += (settings.data ? "&" : "") + "authenticity_token=" + encodeURIComponent(AUTH_TOKEN);
     // });
-    <!--<%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? %>-->
 }
 
 init();

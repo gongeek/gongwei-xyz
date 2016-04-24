@@ -14,6 +14,10 @@ Rails.application.routes.draw do
   get 'login' => 'session#create'
   get 'logout' => 'session#destroy'
 
+  get 'file/:filename' => 'documents#file', :constraints => {:filename => /[^\/]+/}
+
+  post 'file_up' => 'documents#file_up'
+
   post 'articles/preview_post' => 'articles#preview_post'
   get 'articles/preview' => 'articles#preview'
 

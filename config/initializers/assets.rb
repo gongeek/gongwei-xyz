@@ -11,3 +11,5 @@ Rails.application.config.assets.version = '1.0'
 # Rails.application.config.assets.precompile += %w( search.js )
 Rails.application.config.assets.precompile += %w( marked.js )
 Rails.application.config.assets.precompile += %w( highlight.pack.js )
+Rails.application.config.assets.precompile += %w( jquery.ajaxfileupload.js )
+Rails.application.config.assets.precompile += %w( clipboard.js )

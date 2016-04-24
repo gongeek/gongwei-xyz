@@ -1,0 +1,13 @@
+<% content_for :javascript_pre_page do %>
+    <%= javascript_include_tag 'jquery.ajaxfileupload', 'data-turbolinks-track' => false %>
+    <%= javascript_include_tag 'clipboard', 'data-turbolinks-track' => false %>
+<% end %>
+<div class="file-up-panel">
+  <form action="" method="post" enctype="multipart/form-data">
+    <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+    <input type="file" id="file-up-btn" name="document[file]">
+    <ul class="upload-result">
+      <!--<li><i class="icon"></i><a href="/file/屏幕快照 2016-04-13 下午2.09.23.png" target="_blank">屏幕快照 2016-04-13 下午2.09.23.png</a></li>-->
+    </ul>
+  </form>
+</div>
