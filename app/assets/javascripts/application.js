@@ -15,32 +15,95 @@
 //= require modal
 //= require turbolinks
 //= require_tree .
-//= require_self
 //= require nprogress
 //= require scrollTo
-$(document).ready(function () {
+//= require_self
+
+function ready() {
     $('#login-btn').leanModal({
         modalId: '#login-modal'
     });
     $('.search-input').on('keyup', function (e) {
         var code = e.which;
         if (code == 13 && $(this).val().length > 0) {
-            document.location = document.location + '?search=' + $(this).val();
+            document.location = document.location.href + '/?search=' + $(this).val();
+        }
+    });
+    //TODO:节流处理
+    $(document).on('scroll', function (e) {
+        var $toTopBtn = $('.to-top-btn'),
+            $footer = $('.footer');
+        if ($(window).scrollTop() > 200) {
+            $toTopBtn.show();
+        } else {
+            $toTopBtn.hide();
+        }
+        if ($footer.length > 0) {
+            if ($(window).scrollTop() >= ($(document).height() - $footer.height() - $(window).height())) {
+                $toTopBtn.css({
+                    'position': 'absolute',
+                    'bottom': '',
+                    'top': ($(document).height() - $footer.height() - 190) + 'px'
+                });
+            } else {
+                $toTopBtn.css({
+                    'position': 'fixed',
+                    'top': '',
+                    'bottom': '100px'
+                });
+            }
         }
     });
 
-    $(document).on('scroll', function (e) {
-        
+    $('.to-top-btn').on('click', function () {
+        $(window).scrollTo(0, 200);
     });
 
-});
+    setTimeout(function () {
+        $('.flash-notice').fadeOut(1000)
+    }, 500);
 
-$(document).on('page:fetch', function () {
-    NProgress.start();
-});
-$(document).on('page:change', function () {
-    NProgress.done();
-});
-$(document).on('page:restore', function () {
-    NProgress.remove();
-});
+    $('#preview-btn').on('click', function () {
+
+    });
+    //set 配置
+    if (typeof marked === 'function' && typeof hljs === 'object') {
+        marked.setOptions({
+            highlight: function (code) {
+                return hljs.highlightAuto(code).value;
+            },
+            breaks: true
+        });
+    }
+
+    $('#submit-btn').on('click', function (e) {
+        var $form = $(this).parents('form'),
+            contentMd = $form.find('[name="article[content_md]"]').val();
+        $form.append('<textarea style="display: none" name="article[content]">' + marked(contentMd) + '</textarea>');
+        debugger;
+        $form.submit();
+    });
+}
+
+function init() {
+    $(document).ready(ready);
+    $(document).on('page:load', ready);//fix turbolinks
+    $(document).on('page:fetch', function () {
+        NProgress.start();
+    });
+    $(document).on('page:change', function () {
+        NProgress.done();
+    });
+    $(document).on('page:restore', function () {
+        NProgress.remove();
+    });
+    // $(document).ajaxSend(function (event, request, settings) {
+    //     if (typeof(AUTH_TOKEN) == "undefined") return;
+    //     // settings.data is a serialized string like "foo=bar&baz=boink" (or null)
+    //     settings.data = settings.data || "";
+    //     settings.data += (settings.data ? "&" : "") + "authenticity_token=" + encodeURIComponent(AUTH_TOKEN);
+    // });
+    <!--<%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? %>-->
+}
+
+init();

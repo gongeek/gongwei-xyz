@@ -16,4 +16,6 @@
  *= require modal
  *= require_self
  *= require nprogress
+ *= require github
+ *= require github-markdown
  */

@@ -16,7 +16,7 @@
         <%= all_tags.each_slice(4) do |v| %>
             <li>
               <% v.each do |tag| %>
-                  <a href="?tag=<%= tag[0] %>">#<%= tag[0] %>(<%= tag[1] %>)</a>
+                  <a href="/?tag=<%= tag[0] %>">#<%= tag[0] %>(<%= tag[1] %>)</a>
               <% end %>
             </li>
         <% end %>

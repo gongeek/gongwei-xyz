@@ -50,9 +50,30 @@ class ArticlesController < ApplicationController
     end
   end
 
+  def preview
+
+  end
+
+  def preview_post
+    begin
+      Article.temp_article=Article.new(articles_params)
+      respond_to do |format|
+        format.json do
+          render json: {ok: true}
+        end
+      end
+    rescue
+      respond_to do |format|
+        format.json do
+          render json: {ok: false}
+        end
+      end
+    end
+  end
+
   private
   def articles_params
-    params.require(:article).permit(:title, :tags, :content)
+    params.require(:article).permit(:title, :tags, :content, :content_md)
   end
 
   def article

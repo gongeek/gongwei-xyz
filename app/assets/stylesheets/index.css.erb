@@ -210,12 +210,12 @@ body {
   border-radius: 8px;
 }
 
-.main .left .post h2 {
+.main .left .post .title {
   font-size: 36px;
   line-height: 36px;
 }
 
-.main .left .post h2 a {
+.main .left .post .title a {
   color: #222222;
 }
 
@@ -452,11 +452,11 @@ body {
   left: -30px;
 }
 
-.flash {
+.flash-notice {
   position: fixed;
   top: 50px;
   right: 50px;
-  width: 100px;
+  min-width: 100px;
   padding: 5px 20px;
   text-align: center;
   background: #1F1F1A;
@@ -466,9 +466,19 @@ body {
 }
 
 .to-top-btn {
+  display: none;
   position: fixed;
   cursor: pointer;
   font-size: 50px;
-  right: 60px;
+  right: 100px;
   bottom: 100px;
+  z-index: 100;
+}
+
+.ml20 {
+  margin-left: 20px;
+}
+
+.ml10 {
+  margin-left: 10px;
 }

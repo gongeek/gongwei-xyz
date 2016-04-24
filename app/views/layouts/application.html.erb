@@ -6,11 +6,12 @@
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <%= yield :javascript_pre_page %>
 </head>
 <body>
 
 <% if flash[:notice] || flash[:error] %>
-    <div class="flash">
+    <div class="flash-notice">
       <div class="notice"><%= flash[:notice] %></div>
       <div class="error"><%= flash[:error] %></div>
     </div>
