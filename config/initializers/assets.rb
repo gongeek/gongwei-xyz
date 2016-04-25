@@ -9,7 +9,4 @@ Rails.application.config.assets.version = '1.0'
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
 # Rails.application.config.assets.precompile += %w( search.js )
-Rails.application.config.assets.precompile += %w( marked.js )
-Rails.application.config.assets.precompile += %w( highlight.pack.js )
-Rails.application.config.assets.precompile += %w( jquery.ajaxfileupload.js )
-Rails.application.config.assets.precompile += %w( clipboard.js )
+Rails.application.config.assets.precompile += %w( edit.js )

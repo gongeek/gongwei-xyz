@@ -1,6 +1,5 @@
 <% content_for :javascript_pre_page do %>
-    <%= javascript_include_tag 'marked', 'data-turbolinks-track' => false %>
-    <%= javascript_include_tag 'highlight.pack', 'data-turbolinks-track' => false %>
+    <%= javascript_include_tag 'edit', 'data-turbolinks-track' => true %>
 <% end %>
 <%= form_for @article, html: {class: 'pure-form pure-form-stacked'} do |f| %>
     <fieldset>

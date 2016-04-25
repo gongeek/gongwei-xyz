@@ -86,3 +86,7 @@ a.pure-button-selected {
 .ds-post-button:hover {
     background-color: #1F1F1A !important;
 }
+
+.ds-unread-comments-count {
+    background-color: #1F1F1A !important;
+}

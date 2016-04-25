@@ -1,5 +1,5 @@
 class DocumentsController < ApplicationController
-  before_action :set_document, only: [:show, :edit, :update, :destroy]
+  before_action :set_document, only: [:show, :markdown, :update, :destroy]
   before_action :authorize, :except => [:file]
 
   # GET /documents
@@ -69,7 +69,7 @@ class DocumentsController < ApplicationController
         format.html { redirect_to @document, notice: 'Document was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: 'edit' }
+        format.html { render action: 'markdown' }
         format.json { render json: @document.errors, status: :unprocessable_entity }
       end
     end

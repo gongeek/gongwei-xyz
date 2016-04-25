@@ -38,7 +38,7 @@ class ArticlesController < ApplicationController
     if @article.update(articles_params)
       redirect_to @article, notice: '文章编辑成功!'
     else
-      render 'edit'
+      render 'markdown'
     end
   end
 
