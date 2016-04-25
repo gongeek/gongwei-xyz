@@ -1,0 +1,38 @@
+<div class="main">
+  <div class="left">
+    <div class="post">
+      <div class="post-content markdown-body">
+        <p><img src="<%= asset_path 'me.png' %>" alt="图像"></p>
+        <ul>
+          <li><p>base</p>
+            <ul>
+              <li> id :<code>gongeek</code></li>
+              <li>年龄：<code>90后</code></li>
+              <li>城市：<code>杭州</code></li>
+              <li>work：<strong>Simple Web</strong><code>工程师</code></li>
+              <li>邮箱：<code>gongweiqm@qq.com</code></li>
+              <li>格言： <code>追随内心，活在当下</code></li>
+            </ul>
+          </li>
+          <li><p>why</p>
+            <p style="padding-left: 10px">最好的阅读方式是产出。以后争取做好此博客的内容，<br>分享一些个人想法，不限于技术类文章，也会包括一些书籍读后感等内容。</p>
+          </li>
+          <li><p>and more</p>
+            <ul>
+              <li><a target="_blank" href="http://weibo.com/gwiamgw">新浪微博</a></li>
+              <li><a target="_blank" href="https://github.com/gongeek">GitHub</a></li>
+            </ul>
+          </li>
+          <li><p>btw</p>
+            <p style="padding-left: 10px">此博客基于Rails，源码在<a target="_blank" href="https://github.com/gongeek">这里</a></p>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="comment">
+      <!-- 多说评论框 start -->
+      <div class="ds-thread" data-thread-key="about" data-title="关于" data-url="/about.html"></div>
+    </div>
+  </div>
+  <%= render 'share/side' %>
+</div>

@@ -14,7 +14,7 @@
           <i class="icon">&#xe602;</i>
 
           <% @article.tags.split(',').each do |tag| %>
-              <span><a href="#">#<%= tag %></a></span>
+              <span><a href="?tag=<%= tag %>">#<%= tag %></a></span>
           <% end %>
 
         </div>

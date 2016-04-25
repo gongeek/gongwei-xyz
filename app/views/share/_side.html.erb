@@ -27,21 +27,11 @@
     <h3>人气最高</h3>
     <div class="content">
       <ul>
-        <li>
-          <a href="#">夕子的近道</a>
-        </li>
-        <li>
-          <a href="#">记青岛旅行</a>
-        </li>
-        <li>
-          <a href="#">jQuery源码分析</a>
-        </li>
-        <li>
-          <a href="#">夕子的近道</a>
-        </li>
-        <li>
-          <a href="#">FaceBook效应读后感</a>
-        </li>
+        <% favorite.each do |article| %>
+            <li>
+              <a href="<%= url_for article %>"><%= article.title %></a>
+            </li>
+        <% end %>
       </ul>
     </div>
   </div>

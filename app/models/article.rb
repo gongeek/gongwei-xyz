@@ -26,4 +26,27 @@ class Article < ActiveRecord::Base
     5
   end
 
+  def self.all_tags
+    tags_hash={}
+    tags=Article.all.collect { |article| article.tags }
+    tags.each do |tag_string|
+      tag_string.split(',').each do |tag|
+        if tags_hash[tag].nil?
+          tags_hash[tag]=1
+        else
+          tags_hash[tag]+=1
+        end
+      end
+    end
+    tags_arr=tags_hash.sort do |a1, a2|
+      a2[1]<=>a1[1]
+    end
+    tags_arr.to_h
+  end
+
+  #TODO:算法待定
+  def self.favorite
+    Article.take(5)
+  end
+
 end

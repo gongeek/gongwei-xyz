@@ -27,7 +27,7 @@
         $('.search-input').on('keyup', function (e) {
             var code = e.which;
             if (code == 13 && $(this).val().length > 0) {
-                document.location = document.location.href + '/?search=' + $(this).val();
+                window.location.href = '?search=' + $(this).val()
             }
         });
         //TODO:节流处理
@@ -82,17 +82,8 @@
         $(document).on('page:restore', function () {
             NProgress.remove();
         });
-
-
-        // $(document).ajaxSend(function (event, request, settings) {
-        //     if (typeof(AUTH_TOKEN) == "undefined") return;
-        //     // settings.data is a serialized string like "foo=bar&baz=boink" (or null)
-        //     settings.data = settings.data || "";
-        //     settings.data += (settings.data ? "&" : "") + "authenticity_token=" + encodeURIComponent(AUTH_TOKEN);
-        // });
     }
 
     init();
-    console.log('运行了!' + location.href);
 }());
 

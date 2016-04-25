@@ -16,21 +16,7 @@ module ArticlesHelper
   end
 
   def all_tags
-    tags_hash={}
-    tags=Article.all.collect { |article| article.tags }
-    tags.each do |tag_string|
-      tag_string.split(',').each do |tag|
-        if tags_hash[tag].nil?
-          tags_hash[tag]=1
-        else
-          tags_hash[tag]+=1
-        end
-      end
-    end
-    tags_arr=tags_hash.sort do |a1, a2|
-      a2[1]<=>a1[1]
-    end
-    tags_arr.to_h
+    Article.all_tags
   end
 
   #TODO:优化空间
@@ -51,5 +37,9 @@ module ArticlesHelper
 
   def preview?
     request.fullpath.include?('preview')
+  end
+
+  def favorite
+    Article.favorite
   end
 end
