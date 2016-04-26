@@ -24,14 +24,15 @@
             </ul>
           </li>
           <li><p>btw</p>
-            <p style="padding-left: 10px">此博客基于Rails，源码在<a target="_blank" href="https://github.com/gongeek">这里</a></p>
+            <p style="padding-left: 10px">此博客基于Rails，源码在<a target="_blank" href="https://github.com/gongeek/gongwei-xyz">这里</a>
+            </p>
           </li>
         </ul>
       </div>
     </div>
     <div class="comment">
       <!-- 多说评论框 start -->
-      <div class="ds-thread" data-thread-key="about" data-title="关于" data-url="/about.html"></div>
+      <div class="ds-thread" data-thread-key="about" data-title="关于" data-url="<%= request.host %>/about.html"></div>
     </div>
   </div>
   <%= render 'share/side' %>
