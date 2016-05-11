@@ -14,7 +14,7 @@
           <i class="icon">&#xe602;</i>
 
           <% @article.tags.split(',').each do |tag| %>
-              <span><a href="?tag=<%= tag %>">#<%= tag %></a></span>
+              <span><a href="/?tag=<%= tag %>">#<%= tag %></a></span>
           <% end %>
 
         </div>
@@ -23,7 +23,7 @@
         <%= @article.content.html_safe %>
       </div>
 
-      <div class="ds-share flat" data-thread-key="<%= @article.id %>" data-title="<%= @article.title %>" data-content="<%= simple_content(@article.content) %>" data-url="<%= url_for @article %>">
+      <div class="ds-share flat" data-thread-key="<%= @article.id %>" data-title="<%= @article.title %>" data-content="<%= simple_content(@article.content) %>" data-url="<%= url_for :only_path => false %>">
         <div class="ds-share-inline">
           <ul class="ds-share-icons-16">
 
@@ -51,7 +51,7 @@
 
     <div class="comment">
       <!-- 多说评论框 start -->
-      <div class="ds-thread" data-thread-key="<%= @article.id %>" data-title="<%= @article.title %>" data-url="<%= url_for @article %>"></div>
+      <div class="ds-thread" data-thread-key="<%= @article.id %>" data-title="<%= @article.title %>" data-url="<%= url_for :only_path => false %>"></div>
     </div>
   </div>
 
