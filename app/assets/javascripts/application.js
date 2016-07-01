@@ -14,12 +14,13 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require nprogress
-//= require scrollTo
 //= require modal
 //= require duoshuo
 //= require_self
 
 (function () {
+    var timer;
+
     function ready() {
         $('#login-btn').leanModal({
             modalId: '#login-modal'
@@ -30,34 +31,38 @@
                 window.location.href = '?search=' + $(this).val()
             }
         });
-        //TODO:节流处理
         $(document).on('scroll', function (e) {
-            var $toTopBtn = $('.to-top-btn'),
-                $footer = $('.footer');
-            if ($(window).scrollTop() > 200) {
-                $toTopBtn.show();
-            } else {
-                $toTopBtn.hide();
+            if (typeof timer === 'number') {
+                clearTimeout(timer);
             }
-            if ($footer.length > 0) {
-                if ($(window).scrollTop() >= ($(document).height() - $footer.height() - $(window).height())) {
-                    $toTopBtn.css({
-                        'position': 'absolute',
-                        'bottom': '',
-                        'top': ($(document).height() - $footer.height() - 190) + 'px'
-                    });
+            timer = setTimeout(function () {
+                var $toTopBtn = $('.to-top-btn'),
+                    $footer = $('.footer');
+                if ($(window).scrollTop() > 200) {
+                    $toTopBtn.show();
                 } else {
-                    $toTopBtn.css({
-                        'position': 'fixed',
-                        'top': '',
-                        'bottom': '100px'
-                    });
+                    $toTopBtn.hide();
                 }
-            }
+                if ($footer.length > 0) {
+                    if ($(window).scrollTop() >= ($(document).height() - $footer.height() - $(window).height())) {
+                        $toTopBtn.css({
+                            'position': 'absolute',
+                            'bottom': '',
+                            'top': ($(document).height() - $footer.height() - 190) + 'px'
+                        });
+                    } else {
+                        $toTopBtn.css({
+                            'position': 'fixed',
+                            'top': '',
+                            'bottom': '100px'
+                        });
+                    }
+                }
+            }, 100);
         });
 
         $('.to-top-btn').on('click', function () {
-            $(window).scrollTo(0, 200);
+            $('body').stop().animate({scrollTop: 0}, '500', 'swing');
         });
 
         setTimeout(function () {
