@@ -662,3 +662,10 @@
 .markdown-body .r-insert-image img{
     border-radius: 6px;
 }
+
+.markdown-body .t-insert-image{
+    width: 150px;
+}
+.markdown-body .t-insert-image img{
+    border-radius: 6px;
+}
