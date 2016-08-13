@@ -28,7 +28,7 @@
         $('.search-input').on('keyup', function (e) {
             var code = e.which;
             if (code == 13 && $(this).val().length > 0) {
-                window.location.href = '?search=' + $(this).val()
+                window.location.href = '/?search=' + $(this).val()
             }
         });
         $(document).on('scroll', function (e) {
