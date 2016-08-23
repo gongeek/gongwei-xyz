@@ -1,6 +1,6 @@
 module ArticlesHelper
   def simple_content(content)
-    content.gsub(/<[^>]*>/, '')[0, 200]
+    content.gsub(/<[^><]*>/, '')[0, 200]
   end
 
   def simple_date(date)
