@@ -6,7 +6,10 @@
     function ready() {
         marked.setOptions({
             highlight: function (code) {
-                return hljs.highlightAuto(code).value;
+                function htmlEncode(value){
+                    return $('<div/>').text(value).html();
+                }
+                return htmlEncode(hljs.highlightAuto(code).value);
             },
             breaks: true
         });
