@@ -1,62 +1,66 @@
-<div class="main">
-  <div class="left">
-    <div class="post">
-      <h2 class="title">
-        <a href="<%= url_for @article %>">
-          <%= @article.title %>
-        </a>
-      </h2>
-      <div class="info">
-        <div class="date">
-          <i class="icon">&#xe600;</i><%= simple_date(@article.created_at) %>
-        </div>
-        <div class="tag">
-          <i class="icon">&#xe602;</i>
+<% if admin? || !@article.secret %>
+    <div class="main">
+      <div class="left">
+        <div class="post">
+          <h2 class="title">
+            <a href="<%= url_for @article %>">
+              <%= @article.title %>
+            </a>
+          </h2>
+          <div class="info">
+            <div class="date">
+              <i class="icon">&#xe600;</i><%= simple_date(@article.created_at) %>
+            </div>
+            <div class="tag">
+              <i class="icon">&#xe602;</i>
 
-          <% @article.tags.split(',').each do |tag| %>
-              <span><a href="/?tag=<%= tag %>">#<%= tag %></a></span>
+              <% @article.tags.split(',').each do |tag| %>
+                  <span><a href="/?tag=<%= tag %>">#<%= tag %></a></span>
+              <% end %>
+
+            </div>
+          </div>
+          <div class="post-content markdown-body">
+            <%= @article.content.html_safe %>
+          </div>
+
+          <div class="ds-share flat" data-thread-key="<%= @article.id %>" data-title="<%= @article.title %>" data-content="<%= simple_content(@article.content) %>" data-url="<%= url_for :only_path => false %>">
+            <div class="ds-share-inline">
+              <ul class="ds-share-icons-16">
+
+                <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+                <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+                <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+                <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+                <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+              </ul>
+              <div class="ds-share-icons-more">
+              </div>
+            </div>
+          </div>
+
+          <% unless preview? %>
+              <div class="btn-group">
+                <% if admin? %>
+                    <%= link_to '编辑', edit_article_path(@article), class: 'link-btn' %>
+                    <%= link_to '删除', article_path(@article), class: 'link-btn', method: :delete, data: {confirm: '确认删除?'} %>
+                <% end %>
+              </div>
           <% end %>
-
         </div>
-      </div>
-      <div class="post-content markdown-body">
-        <%= @article.content.html_safe %>
-      </div>
 
-      <div class="ds-share flat" data-thread-key="<%= @article.id %>" data-title="<%= @article.title %>" data-content="<%= simple_content(@article.content) %>" data-url="<%= url_for :only_path => false %>">
-        <div class="ds-share-inline">
-          <ul class="ds-share-icons-16">
-
-            <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
-            <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
-            <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
-            <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
-            <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
-
-          </ul>
-          <div class="ds-share-icons-more">
-          </div>
+        <div class="comment">
+          <!-- 多说评论框 start -->
+          <div class="ds-thread" data-thread-key="<%= @article.id %>" data-title="<%= @article.title %>" data-url="<%= url_for :only_path => false %>"></div>
         </div>
       </div>
 
-      <% unless preview? %>
-          <div class="btn-group">
-            <% if admin? %>
-                <%= link_to '编辑', edit_article_path(@article), class: 'link-btn' %>
-                <%= link_to '删除', article_path(@article), class: 'link-btn', method: :delete, data: {confirm: '确认删除?'} %>
-            <% end %>
-          </div>
-      <% end %>
+
+
+
+      <%= render 'share/side' %>
     </div>
-
-    <div class="comment">
-      <!-- 多说评论框 start -->
-      <div class="ds-thread" data-thread-key="<%= @article.id %>" data-title="<%= @article.title %>" data-url="<%= url_for :only_path => false %>"></div>
-    </div>
-  </div>
-
-
-
-
-  <%= render 'share/side' %>
-</div>
+<% else %>
+    <p style="text-align: center;">私密文章!</p>
+<% end %>

@@ -5,6 +5,10 @@
     <fieldset>
       <%= f.label :title %>
       <%= f.text_field :title, class: 'pure-input-1-3' %>
+
+      <%= f.label :secret %>
+      <%= f.check_box :secret, class: 'pure-input-1-3' %>
+
       <%= f.label :tags %>
       <%= f.text_field :tags, class: 'pure-input-1-3' %>
       <%= f.label :content_md %>

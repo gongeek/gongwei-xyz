@@ -16,7 +16,7 @@ module ArticlesHelper
   end
 
   def all_tags
-    Article.all_tags
+    Article.all_tags(admin?)
   end
 
   #TODO:优化空间
@@ -40,6 +40,6 @@ module ArticlesHelper
   end
 
   def favorite
-    Article.favorite
+    Article.favorite(admin?)
   end
 end

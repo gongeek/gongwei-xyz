@@ -5,12 +5,13 @@ class ArticlesController < ApplicationController
   def index
     page=params[:page]||1
     page=page.to_i
+    admin=admin?
     if params[:search]
-      @articles = Article.search(params[:search], page)
+      @articles = Article.search(params[:search], page,admin)
     elsif params[:tag]
-      @articles=Article.filter_tag(params[:tag], page)
+      @articles=Article.filter_tag(params[:tag], page,admin)
     else
-      @articles =Article.get_at_page(page)
+      @articles =Article.get_at_page(page,admin)
     end
   end
 
@@ -72,9 +73,13 @@ class ArticlesController < ApplicationController
     # end
   end
 
+  def Article
+    Article.unscoped
+  end
+
   private
   def articles_params
-    params.require(:article).permit(:title, :tags, :content, :content_md)
+    params.require(:article).permit(:title, :tags, :content, :content_md, :secret)
   end
 
   def article

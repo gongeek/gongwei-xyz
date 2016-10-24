@@ -47,6 +47,11 @@
           </div>
         </div>
     <% end %>
+    <% if @articles.length==0 %>
+        <div class="post">
+          暂无
+        </div>
+    <% end %>
     <%= render 'share/paging', :paging => page_info(@articles) %>
   </div>
   <%= render 'share/side' %>
