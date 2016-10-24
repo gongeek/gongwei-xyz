@@ -23,14 +23,30 @@ module ArticlesHelper
   def page_info articles
     page=params[:page]||1
     page=page.to_i
+    admin=admin?
     if params[:tag]
-      total_size=Article.where('tags LIKE ?', "%#{params[:tag]}%").select do |article|
-        article.tags.split(',').include?(params[:tag])
-      end.size
+      if admin
+        total_size=Article.where('tags LIKE ?', "%#{params[:tag]}%").select do |article|
+          article.tags.split(',').include?(params[:tag])
+        end.size
+      else
+        total_size=Article.normal.where('tags LIKE ?', "%#{params[:tag]}%").select do |article|
+          article.tags.split(',').include?(params[:tag])
+        end.size
+      end
     elsif params[:search]
-      total_size=Article.where('title LIKE ? OR content LIKE ?', "%#{params[:search]}%", "%#{params[:search]}%").size
+      if admin
+        total_size=Article.where('title LIKE ? OR content LIKE ?', "%#{params[:search]}%", "%#{params[:search]}%").size
+      else
+        total_size=Article.normal.where('title LIKE ? OR content LIKE ?', "%#{params[:search]}%", "%#{params[:search]}%").size
+      end
     else
-      total_size=Article.all.size
+      if admin
+        total_size=Article.all.size
+      else
+        total_size=Article.normal.all.size
+      end
+
     end
     page_info={page_size: Article.page_size, curr_page: page, total_size: total_size}
   end
