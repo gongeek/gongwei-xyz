@@ -3,7 +3,8 @@
     <a href="/">宫卫.xyz</a>
   </h1>
   <ul class="nav">
-    <li><a class="<%= 'active' unless about? %>" href="/">首页</a></li>
+    <li><a class="<%= 'active' unless about? || share? %>" href="/">首页</a></li>
+    <li><a class="<%= share? ? 'active' : '' %>" href="/share.html">RECORD</a></li>
     <li><a class="<%= about? ? 'active' : '' %>" href="/about.html">关于</a></li>
     <li>
       <% if admin? %>

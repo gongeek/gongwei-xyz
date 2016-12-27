@@ -7,4 +7,8 @@ module ApplicationHelper
     request.fullpath.include?('about')
   end
 
+  def share?
+    request.fullpath.include?('share')
+  end
+
 end

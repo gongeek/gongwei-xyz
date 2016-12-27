@@ -1,17 +1,17 @@
 class ArticlesController < ApplicationController
   before_action :article, :only => [:show, :edit, :update, :destroy]
-  before_action :authorize, :except => [:index, :show]
+  before_action :authorize, :except => [:index, :show, :share]
 
   def index
     page=params[:page]||1
     page=page.to_i
     admin=admin?
     if params[:search]
-      @articles = Article.search(params[:search], page,admin)
+      @articles = Article.search(params[:search], page, admin)
     elsif params[:tag]
-      @articles=Article.filter_tag(params[:tag], page,admin)
+      @articles=Article.filter_tag(params[:tag], page, admin)
     else
-      @articles =Article.get_at_page(page,admin)
+      @articles =Article.get_at_page(page, admin)
     end
   end
 
@@ -20,6 +20,11 @@ class ArticlesController < ApplicationController
   end
 
   def show
+  end
+
+  def share
+    @article=Article.find_by_title('share')
+    render 'single'
   end
 
   def create
