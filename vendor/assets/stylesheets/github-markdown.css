@@ -9,7 +9,7 @@
     color: #333;
     font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     font-size: 16px;
-    line-height: 1.6;
+    line-height: 1.8;
     word-wrap: break-word;
 }
 
@@ -23,11 +23,11 @@
 }
 
 .markdown-body strong {
-    font-weight: bold;
+    font-weight: 350;
 }
 
 .markdown-body h1 {
-    font-size: 2em;
+    font-size: 1.8em;
     margin: 0.67em 0;
 }
 
@@ -127,14 +127,15 @@
     margin-top: 15px;
     margin-bottom: 15px;
     line-height: 1.1;
+    font-weight: 350;
 }
 
 .markdown-body h1 {
-    font-size: 30px;
+    font-size: 28px;
 }
 
 .markdown-body h2 {
-    font-size: 21px;
+    font-size: 18px;
 }
 
 .markdown-body h3 {
@@ -254,7 +255,7 @@
 .markdown-body h6 {
     margin-top: 1em;
     margin-bottom: 16px;
-    font-weight: bold;
+    font-weight: 350;
     line-height: 1.4;
 }
 
@@ -300,7 +301,7 @@
 
 .markdown-body h2 {
     padding-bottom: 0.3em;
-    font-size: 1.75em;
+    font-size: 1.5em;
     line-height: 1.225;
     border-bottom: 1px solid #eee;
 }
@@ -310,7 +311,7 @@
 }
 
 .markdown-body h3 {
-    font-size: 1.5em;
+    font-size: 1.3em;
     line-height: 1.43;
 }
 
@@ -388,7 +389,7 @@
     margin-top: 16px;
     font-size: 1em;
     font-style: italic;
-    font-weight: bold;
+    font-weight: 350;
 }
 
 .markdown-body dl dd {
@@ -419,7 +420,7 @@
 }
 
 .markdown-body table th {
-    font-weight: bold;
+    font-weight: 350;
 }
 
 .markdown-body table th,
@@ -575,7 +576,7 @@
 
 .markdown-body .pl-sr .pl-cce {
     color: #63a35c;
-    font-weight: bold;
+    font-weight: 350;
 }
 
 .markdown-body .pl-ml {
@@ -586,7 +587,7 @@
 .markdown-body .pl-mh .pl-en,
 .markdown-body .pl-ms {
     color: #1d3e81;
-    font-weight: bold;
+    font-weight: 350;
 }
 
 .markdown-body .pl-mq {
@@ -600,7 +601,7 @@
 
 .markdown-body .pl-mb {
     color: #333;
-    font-weight: bold;
+    font-weight: 350;
 }
 
 .markdown-body .pl-md {
@@ -615,7 +616,7 @@
 
 .markdown-body .pl-mdr {
     color: #795da3;
-    font-weight: bold;
+    font-weight: 350;
 }
 
 .markdown-body .pl-mo {

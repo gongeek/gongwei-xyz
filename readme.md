@@ -14,10 +14,10 @@ simple but enougth
  + support markdown and highlight 
  + articles CRUD
  + support upload file into db
- + comment function base in [duoshuo](http://duoshuo.com)
+ <!-- + comment function base in [laibili](http://www.laibili.com.cn/) -->
  + simple pagination
  + clean code organization
  + don't use too many third-party gem ,so beginner-friendly
   
 # Demo
- [http://gongwei.xyz](http://gongwei.xyz)
+ [http://gongeek.com](http://gongeek.com)

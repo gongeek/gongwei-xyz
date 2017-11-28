@@ -15,7 +15,6 @@
 //= require turbolinks
 //= require nprogress
 //= require modal
-//= require duoshuo
 //= require_self
 
 (function () {
@@ -62,7 +61,7 @@
         });
 
         $('.to-top-btn').on('click', function () {
-            $('body').stop().animate({scrollTop: 0}, '500', 'swing');
+            $('html,body').stop().animate({scrollTop: 0}, '500', 'swing');
         });
 
         setTimeout(function () {
@@ -73,10 +72,10 @@
     function init() {
         $(document).ready(ready);
 
-        $(document).on('page:load', ready);//fix turbolinks
-        $(document).on('page:load', function () {
-            DUOSHUO.init();
-        });
+        // $(document).on('page:load', ready);//fix turbolinks
+        // // $(document).on('page:load', function () {
+        // //     // DUOSHUO.init();
+        // // });
 
         $(document).on('page:fetch', function () {
             NProgress.start();
