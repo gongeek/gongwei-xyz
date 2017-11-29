@@ -74,10 +74,7 @@
     function init() {
         $(document).ready(ready);
 
-        // $(document).on('page:load', ready);//fix turbolinks
-        $(document).on('page:load', function () {
-            window.reRenderYoYo()
-        });
+        $(document).on('page:load', ready);//fix turbolinks
 
         $(document).on('page:fetch', function () {
             NProgress.start();
