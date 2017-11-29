@@ -14,7 +14,7 @@ simple but enougth
  + support markdown and highlight 
  + articles CRUD
  + support upload file into db
- <!-- + comment function base in [laibili](http://www.laibili.com.cn/) -->
+ + comment function base in [yoyo](https://github.com/metrue/YoYo)
  + simple pagination
  + clean code organization
  + don't use too many third-party gem ,so beginner-friendly

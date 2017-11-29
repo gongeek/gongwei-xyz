@@ -8,6 +8,7 @@
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 </head>
 <body>
 
@@ -22,7 +23,6 @@
 <div class="to-top-btn">
   <i class="icon">&#xe603;</i>
 </div>
-<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 <%= yield :javascript_pre_page %>
 <script src="http://s95.cnzz.com/z_stat.php?id=1258820262&web_id=1258820262" language="JavaScript"></script>
 </body>

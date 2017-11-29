@@ -15,6 +15,7 @@
 //= require turbolinks
 //= require nprogress
 //= require modal
+//= require yoyo
 //= require_self
 
 (function () {
@@ -67,15 +68,16 @@
         setTimeout(function () {
             $('.flash-notice').fadeOut(1000)
         }, 500);
+        window.reRenderYoYo()
     }
 
     function init() {
         $(document).ready(ready);
 
         // $(document).on('page:load', ready);//fix turbolinks
-        // // $(document).on('page:load', function () {
-        // //     // DUOSHUO.init();
-        // // });
+        $(document).on('page:load', function () {
+            window.reRenderYoYo()
+        });
 
         $(document).on('page:fetch', function () {
             NProgress.start();
