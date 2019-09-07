@@ -45,7 +45,7 @@
             },
             onComplete: function (filename, response) {
                 if (response.ok) {
-                    $('.upload-result').append('<li><i class="icon" data-clipboard-text="http://' + location.host + '/file/' + response.data.filename + '">&#xe605;</i><a href="/file/' + response.data.filename + '" target="_blank">' + response.data.filename + '</a></li>')
+                    $('.upload-result').append('<li><i class="icon" data-clipboard-text="/file/' + response.data.filename + '">&#xe605;</i><a href="/file/' + response.data.filename + '" target="_blank">' + response.data.filename + '</a></li>')
                 } else {
                     $('.upload-result').append('<li>error!</li>>')
                 }
