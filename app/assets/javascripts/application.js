@@ -15,7 +15,6 @@
 //= require turbolinks
 //= require nprogress
 //= require modal
-//= require yoyo
 //= require_self
 
 (function () {
@@ -68,7 +67,6 @@
         setTimeout(function () {
             $('.flash-notice').fadeOut(1000)
         }, 500);
-        window.reRenderYoYo()
     }
 
     function init() {
