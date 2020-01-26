@@ -8,7 +8,13 @@ simple but enougth
  + rake db:migrate
  + rails s
 
- 
+# How to deploy
++ rake db:create RAILS_ENV=production
++ rake db:migrate RAILS_ENV=production
++ rake assets:precompile RAILS_ENV=production
++ bundle exec puma -C config/puma.rb 
+
+
 # Feature
  + support markdown and highlight 
  + articles CRUD
