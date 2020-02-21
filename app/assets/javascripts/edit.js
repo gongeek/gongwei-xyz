@@ -56,7 +56,7 @@
 
     function init() {
         $(document).ready(ready);
-        $(document).on('page:load', ready);//fix turbolinks
+        $(document).on('turbolinks:load', ready);//fix turbolinks
     }
 
     init();

@@ -72,15 +72,15 @@
     function init() {
         $(document).ready(ready);
 
-        $(document).on('page:load', ready);//fix turbolinks
+        $(document).on('turbolinks:load', ready);//fix turbolinks
 
-        $(document).on('page:fetch', function () {
+        $(document).on('turbolinks:fetch', function () {
             NProgress.start();
         });
-        $(document).on('page:change', function () {
+        $(document).on('turbolinks:change', function () {
             NProgress.done();
         });
-        $(document).on('page:restore', function () {
+        $(document).on('turbolinks:restore', function () {
             NProgress.remove();
         });
     }
