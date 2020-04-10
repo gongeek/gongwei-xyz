@@ -27,6 +27,11 @@ class ArticlesController < ApplicationController
     render 'single'
   end
 
+  def about
+    @article=Article.find_by_title('about')
+    render 'single'
+  end
+
   def create
     @article = Article.new(articles_params)
     if @article.save
